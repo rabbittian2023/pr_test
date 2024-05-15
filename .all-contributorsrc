@@ -1,0 +1,50 @@
+{
+  "projectName": "pr_test",
+  "projectOwner": "rabbittian2023",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 72,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "ntscshen888",
+      "name": "ntscshen888",
+      "avatar_url": "https://avatars.githubusercontent.com/u/169418666?v=4",
+      "profile": "https://github.com/ntscshen888",
+      "contributions": [
+        "code",
+        "bug",
+        "doc"
+      ]
+    },
+    {
+      "login": "rabbittian2023",
+      "name": "rabbittian2023",
+      "avatar_url": "https://avatars.githubusercontent.com/u/169418877?v=4",
+      "profile": "https://github.com/rabbittian2023",
+      "contributions": [
+        "code",
+        "doc",
+        "tool",
+        "test",
+        "question",
+        "ideas"
+      ]
+    },
+    {
+      "login": "d3george",
+      "name": "kevin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/143698843?v=4",
+      "profile": "https://blog.slashspaces.com/",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
