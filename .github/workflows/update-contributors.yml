@@ -43,7 +43,7 @@ jobs:
       - name: Switch to main branch and pull latest
         run: |
           git fetch --all
-          git checkout main
+          git checkout -f main
           git pull origin main
 
       - name: Add Contributor
