@@ -1,73 +1,14 @@
-name: Update All Contributors
-on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]  # 仅在合并后触发
+name: Test PAT
+on: [push]
 
 jobs:
-  update-contributors:
+  test-pat:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
-    strategy:
-      matrix:
-        node-version: [20.x]
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}  # 确保使用PR的最新提交的内容和commit
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Setup Git
-        run: |
-          git config --global user.email "rabbittian2023@163.com"
-          git config --global user.name "rabbittian2023"
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/rabbittian2023/pr_test.git
-        env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
-      - name: Switch to main branch and pull latest
-        run: |
-          git fetch --all
-          git checkout -f main
-          git pull origin main
-
-      - name: Add Contributor
-        run: |
-          export GITHUB_ACTOR=${{ github.event.pull_request.user.login }}
-          node scripts/updateContributors.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ACTOR: ${{ github.event.pull_request.user.login }}  # 使用PR创建者的用户名
 
       - name: Echo Token Length
         run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
-      - name: Check remote URL
-        run: git remote -v
-
-      - name: Commit changes if there are any
-        run: |
-          git add .
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "docs: update contributors list"
-            git push origin main
-          else
-            echo "No changes to commit"
-          fi
