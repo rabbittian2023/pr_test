@@ -63,20 +63,6 @@ jobs:
           git pull origin main
 
 
-      - name: Check for Changes
-        run: |
-          # 输出 git status 的结果
-          echo "Checking for changes..."
-          git status
-
-          # 使用 git status --porcelain 查看是否有更改
-          CHANGES=$(git status --porcelain)
-          if [ -n "$CHANGES" ]; then
-            echo "Changes detected:"
-            echo "$CHANGES"
-          else
-            echo "No changes detected."
-          fi
       - name: Add Contributor
         run: |
           export GITHUB_ACTOR=${{ github.event.pull_request.user.login }}
@@ -93,6 +79,20 @@ jobs:
       - name: Check remote URL
         run: git remote -v
 
+      - name: Check for Changes
+        run: |
+          # 输出 git status 的结果
+          echo "Checking for changes..."
+          git status
+
+          # 使用 git status --porcelain 查看是否有更改
+          CHANGES=$(git status --porcelain)
+          if [ -n "$CHANGES" ]; then
+            echo "Changes detected:"
+            echo "$CHANGES"
+          else
+            echo "No changes detected."
+          fi
       - name: Commit changes if there are any
         run: |
           git add .
