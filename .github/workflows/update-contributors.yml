@@ -36,7 +36,7 @@ jobs:
         run: |
           git config --global user.email "rabbittian2023@163.com"
           git config --global user.name "rabbittian2023"
-          git remote set-url origin https://x-access-token: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@github.com/rabbittian2023/pr_test.git
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/rabbittian2023/pr_test.git
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
