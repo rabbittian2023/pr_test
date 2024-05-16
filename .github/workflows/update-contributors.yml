@@ -56,8 +56,33 @@ jobs:
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
+      - name: Switch to main branch and pull latest
+        run: |
+          git fetch --all
+          git checkout -f main
+          git pull origin main
+
       - name: Echo Token Length3  # 添加一个步骤来检查 token 长度
         run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
+      - name: Check remote URL
+        run: git remote -v
+
+      - name: Commit changes if there are any
+        run: |
+          git add .
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "docs: update contributors list"
+            git push origin main
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          
+      - name: Echo Token Length4  # 添加一个步骤来检查 token 长度
+        run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
