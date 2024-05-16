@@ -36,3 +36,17 @@ jobs:
         run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          
+      - name: Setup Git
+        run: |
+          git config --global user.email "rabbittian2023@163.com"
+          git config --global user.name "rabbittian2023"
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/rabbittian2023/pr_test.git
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          
+      - name: Echo Token Length2  # 添加一个步骤来检查 token 长度
+        run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          
