@@ -59,6 +59,16 @@ function main() {
   
   updateContributors(username, contributionType);
   
+  // 检查文件状态
+  const checkFileStatus = (filePath) => {
+    const status = execSync(`git status --porcelain ${filePath}`).toString().trim();
+    console.log(`${filePath} status: ${status}`);
+    return status;
+  };
+
+  const allContributorsrcStatus = checkFileStatus('.all-contributorsrc');
+  const readmeStatus = checkFileStatus('README.md');
+  
   // 检查 git status 以确认有变更
   const changes = execSync('git status --porcelain').toString().trim();
   console.log('Git changes:', changes);
