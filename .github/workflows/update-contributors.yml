@@ -1,10 +1,6 @@
 
 name: Test PAT
-on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]  # 仅在合并后触发
+on: [push]
 
 jobs:
   test-pat:
