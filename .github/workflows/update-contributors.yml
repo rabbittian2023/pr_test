@@ -62,6 +62,14 @@ jobs:
           git checkout -f main
           git pull origin main
 
+      - name: Add Contributor
+        run: |
+          export GITHUB_ACTOR=${{ github.event.pull_request.user.login }}
+          node scripts/updateContributors.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.event.pull_request.user.login }}  # 使用PR创建者的用户名
+
       - name: Echo Token Length3  # 添加一个步骤来检查 token 长度
         run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
         env:
