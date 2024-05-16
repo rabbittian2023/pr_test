@@ -36,7 +36,7 @@ jobs:
         run: |
           git config --global user.email "rabbittian2023@163.com"
           git config --global user.name "rabbittian2023"
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/ntscshen/slash-admin.git
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/rabbittian2023/pr_test.git
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
@@ -51,7 +51,7 @@ jobs:
           export GITHUB_ACTOR=${{ github.event.pull_request.user.login }}
           node scripts/updateContributors.js
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           GITHUB_ACTOR: ${{ github.event.pull_request.user.login }} # 使用PR创建者的用户名
 
       - name: Echo Token Length
