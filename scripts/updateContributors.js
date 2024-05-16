@@ -45,8 +45,12 @@ function main() {
   console.log('fix: 111updateContribcutors.js - GITHUB_ACTOR :>> ', process.env.GITHUB_ACTOR);
   console.log('username :>> ', username);
   const lastCommitMessage = execSync('git log -1 --pretty=%B').toString().trim();
-  const contributionType = typeMap[lastCommitMessage.split(' ')[0]] || 'code';
-
+  const commitType = lastCommitMessage.split(' ')[0];
+  const contributionType = typeMap[commitType] || 'code';
+  console.log('Last commit message: ', lastCommitMessage);
+  console.log('Commit type: ', commitType);
+  console.log('Contribution type: ', contributionType);
+  
   updateContributors(username, contributionType);
 }
 
