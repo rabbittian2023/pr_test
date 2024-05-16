@@ -54,10 +54,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           GITHUB_ACTOR: ${{ github.event.pull_request.user.login }} # 使用PR创建者的用户名
 
-      - name: Echo Token Length
+      - name: Echo1 Token Length
         run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN}"
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Echo2 Token Length
+        run: echo "Token Length is ${#PERSONAL_ACCESS_TOKEN_2}"
+        env:
+          PERSONAL_ACCESS_TOKEN_2: ${{ secrets.PERSONAL_ACCESS_TOKEN_2 }}
 
       - name: Check remote URL
         run: git remote -v
