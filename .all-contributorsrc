@@ -10,16 +10,6 @@
   "imageSize": 72,
   "commit": true,
   "commitConvention": "none",
-  "contributors": [
-    {
-      "login": "ntscshen",
-      "name": "ntscshen",
-      "avatar_url": "https://avatars.githubusercontent.com/u/21041458?v=4",
-      "profile": "https://github.com/ntscshen",
-      "contributions": [
-        "code"
-      ]
-    }
-  ],
+  "contributors": [],
   "contributorsPerLine": 7
 }
