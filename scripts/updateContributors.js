@@ -70,12 +70,6 @@ function updateContributors(username, type) {
       const listEndIndex = readmeContent.indexOf(listEndMarker) + listEndMarker.length;
       const contributorsListSection = readmeContent.substring(listStartIndex, listEndIndex);
 
-      // 将撰稿人部分翻译成中文
-      const translatedBadgeSection = contributorsBadgeSection;
-      const translatedListSection = contributorsListSection
-        .replace('Contributors ✨', '贡献者 ✨')
-        .replace('Thanks goes to these wonderful people', '感谢这些出色的人');
-
       // 阅读 README.zh-CN.md 内容
       let readmeZhCnContent = fs.readFileSync('README.zh-CN.md', 'utf-8');
 
@@ -87,7 +81,7 @@ function updateContributors(username, type) {
       }
 
       // 在 README.zh-CN.md 中插入翻译好的贡献者徽章部分
-      readmeZhCnContent = readmeZhCnContent.slice(0, existingBadgeStartIndex) + translatedBadgeSection + readmeZhCnContent.slice(existingBadgeStartIndex);
+      readmeZhCnContent = readmeZhCnContent.slice(0, existingBadgeStartIndex) + contributorsBadgeSection + readmeZhCnContent.slice(existingBadgeStartIndex);
 
       // 删除 README.zh-CN.md 中现有的贡献者列表部分
       const existingListStartIndex = readmeZhCnContent.indexOf(listStartMarker);
@@ -97,7 +91,7 @@ function updateContributors(username, type) {
       }
 
       // 在 README.zh-CN.md 中插入已翻译的贡献者名单部分
-      readmeZhCnContent = readmeZhCnContent.slice(0, existingListStartIndex) + translatedListSection + readmeZhCnContent.slice(existingListStartIndex);
+      readmeZhCnContent = readmeZhCnContent.slice(0, existingListStartIndex) + contributorsListSection + readmeZhCnContent.slice(existingListStartIndex);
 
       // 将更新内容写入 README.zh-CN.md
       fs.writeFileSync('README.zh-CN.md', readmeZhCnContent);
