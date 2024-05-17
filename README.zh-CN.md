@@ -8,6 +8,8 @@ PR测试 - 888
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+zh-CN.md 特有的文件...
+
 ## 🤝 参与贡献
 
 
